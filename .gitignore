@@ -1,0 +1,5 @@
+.vs/
+obj/
+bin/
+AOABM.Android/bin/Debug/AOABM.Android.dll
+AOABM.Android/bin/Debug/AOABM.Android.pdb

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:AOABM.Views"
+             x:Class="AOABM.Views.Chapter">
+    <ContentView.Content>
+        <Grid x:Name="ParentLayout" VerticalOptions="FillAndExpand" >
+            <views:PinchToZoomContainer x:Name="PTZ">
+                <Grid VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout x:Name="Right" Grid.Column="5" Margin="0" VerticalOptions="FillAndExpand"></StackLayout>
+                    <StackLayout x:Name="Middle" Grid.Column="1" Grid.ColumnSpan="4" Margin="0" VerticalOptions="FillAndExpand"></StackLayout>
+                    <StackLayout x:Name="Left" Margin="0" VerticalOptions="FillAndExpand"></StackLayout>
+                    <Image x:Name="ImageHolder" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="6" InputTransparent="True"></Image>
+                </Grid>
+            </views:PinchToZoomContainer>
+        </Grid>
+    </ContentView.Content>
+</ContentPage>
