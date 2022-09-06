@@ -1,4 +1,5 @@
-﻿using AOABM.Views;
+﻿using AOABM.Services;
+using AOABM.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +14,7 @@ using MainApp = AOABM.App;
 
 namespace AOABM.UWP
 {
-    public class FileSystem : IFileSystem
+    public class FileSystem : IDataStore
     {
         public async Task DoDownload(string link, VolumeDefinition vol)
         {
@@ -188,6 +189,29 @@ namespace AOABM.UWP
             {
                 await dir.DeleteAsync(StorageDeleteOption.PermanentDelete);
             }
+        }
+
+        int? currentPicture = null;
+        string currentChapter = null;
+
+        public async Task SetCurrentPicture(int pic)
+        {
+            currentPicture = pic;
+        }
+
+        public async Task SetCurrentChapter(string chapter)
+        {
+            currentChapter = chapter;
+        }
+
+        public async Task<int> GetCurrentPic()
+        {
+            return currentPicture ?? 0;
+        }
+
+        public async Task<string> GetCurrentChapter()
+        {
+            return currentChapter ?? string.Empty;
         }
     }
 }

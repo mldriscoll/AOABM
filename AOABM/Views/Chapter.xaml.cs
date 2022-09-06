@@ -49,35 +49,20 @@ namespace AOABM.Views
 
         private async void LeftTap_Tapped(object sender, EventArgs e)
         {
-            App.CurrentImage++;
-            if (App.CurrentImage >= App.CurrentFolder.Images.Count)
+            var finished = await App.FileSystem.NextPicture();
+            if (finished)
             {
-                App.CurrentImage = 0;
-                var index = App.FlatFolders.IndexOf(App.CurrentFolder) + 1;
-                if(index >= App.FlatFolders.Count)
-                {
-                    //Back to main menu
-                }
-                else
-                {
-                    App.CurrentFolder = App.FlatFolders[index];
-                }
-
+                await Navigation.PopAsync();
             }
-            await draw();
+            else
+            {
+                await draw();
+            }
         }
 
         private async void RightTap_Tapped(object sender, EventArgs e)
         {
-            App.CurrentImage--;
-            if (App.CurrentImage < 0)
-            {
-                var index = App.FlatFolders.IndexOf(App.CurrentFolder) - 1;
-                if (index < 0) index = 0;
-                App.CurrentFolder = App.FlatFolders[index];
-
-                App.CurrentImage = App.CurrentFolder.Images.Count - 1;
-            }
+            await App.FileSystem.PreviousPicture();
             await draw();
         }
 
@@ -121,7 +106,7 @@ namespace AOABM.Views
 
         private async Task draw()
         {
-            var image = App.CurrentFolder.Images[App.CurrentImage];
+            var image = (await App.FileSystem.CurrentFolder()).Images[await App.FileSystem.GetCurrentPic()];
             var pic = await App.FileSystem.GetImageStream(image);
             //pic.Item1.Seek(0, System.IO.SeekOrigin.Begin);
 

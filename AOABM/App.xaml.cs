@@ -17,51 +17,25 @@ namespace AOABM
 
         public static HttpClient client = new HttpClient();
 
-        public static IFileSystem FileSystem;
-        public static List<Folders> Folders;
-        public static List<Folders> FlatFolders;
-        public static Folders CurrentFolder;
-        public static int CurrentImage = 0;
+        public static IDataStore FileSystem = null;
 
         public App()
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
-
-            //MainPage = new AppShell();
+            MainPage = new NavigationPage(new BasePage());
         }
 
         protected override async void OnStart()
         {
-            await LoadFolders();
-
-            MainPage = new AppShell();
-        }
-
-        public static async Task LoadFolders()
-        {
-            Folders = (await FileSystem.GetFolders())?.SubFolders ?? new List<Folders>();
-
-            FlatFolders = new List<Folders>();
-            foreach(var folder in Folders)
+            while(FileSystem == null)
             {
-                ProcessFolder(folder);
-            }
-        }
-
-        private static void ProcessFolder(Folders folder)
-        {
-            if (folder.Images.Any())
-            {
-                FlatFolders.Add(folder);
+                await Task.Delay(100);
             }
 
-            foreach(var f in folder.SubFolders)
-            {
-                ProcessFolder(f);
-            }
+            await FileSystem.LoadFolders();
         }
+
 
         protected override void OnSleep()
         {

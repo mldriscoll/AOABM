@@ -4,7 +4,11 @@
              x:Class="AOABM.Views.DownloadPage">
     <ContentPage.Content>
       <StackLayout x:Name="SL">
-          <Label Text="Hello Xamarin.Forms!" />
+          <Label Text="j-novel.club Username:" />
+            <Entry x:Name="Username"></Entry>
+            <Label Text="j-novel.club Password:"></Label>
+            <Entry x:Name="Password" IsPassword="True"></Entry>
+            <Button Text="Download" Clicked="Button_Clicked"></Button>
         </StackLayout>
   </ContentPage.Content>
 </ContentPage>

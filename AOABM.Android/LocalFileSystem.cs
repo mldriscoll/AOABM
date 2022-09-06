@@ -8,13 +8,17 @@ using System.Linq;
 using Android.Graphics;
 using Xamarin.Essentials;
 using System;
+using AOABM.Services;
 
 namespace AOABM.Droid
 {
-    public class LocalFileSystem : IFileSystem
+    public class LocalFileSystem : IDataStore
     {
         string DataFolder = FileSystem.AppDataDirectory + "/manga/";
         string TempFolder = FileSystem.AppDataDirectory + "/temp/";
+        public static List<Folders> Folders;
+        public static List<Folders> FlatFolders;
+
         public async Task DoDownload(string link, VolumeDefinition vol)
         {
             if (!Directory.Exists(TempFolder)) Directory.CreateDirectory(TempFolder);
@@ -35,7 +39,7 @@ namespace AOABM.Droid
             if (Directory.Exists(TempFolder + dirName)) Directory.Delete(TempFolder + dirName, true);
             Directory.CreateDirectory(TempFolder + dirName);
 
-            using(var file = File.OpenRead(TempFolder + vol.volumeName))
+            using (var file = File.OpenRead(TempFolder + vol.volumeName))
             {
                 using (var za = new ZipArchive(file))
                 {
@@ -81,14 +85,14 @@ namespace AOABM.Droid
                         }
                         i++;
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         await TrimAndMove($"{TempFolder}{dirName}/{entry.NameOne}", $"{DataFolder}{folder}{i}.jpg");
                     }
                 }
             }
 
-            Directory.Delete(TempFolder+dirName, true);
+            Directory.Delete(TempFolder + dirName, true);
         }
         private async Task CombineImages(string one, string two, string target)
         {
@@ -148,7 +152,7 @@ namespace AOABM.Droid
 
             for (int x = 0; x < intmap.Width; x++)
             {
-                for(int y = 0; y < yMin; y++)
+                for (int y = 0; y < yMin; y++)
                 {
                     if (intmap.GetPixel(x, y) != Color.White)
                     {
@@ -168,7 +172,7 @@ namespace AOABM.Droid
                 }
             }
 
-            for(int x = intmap.Width-1; x > xMin; x--)
+            for (int x = intmap.Width - 1; x > xMin; x--)
             {
                 var pixels = new int[intmap.Height];
                 intmap.GetPixels(pixels, 0, 1, x - 1, 0, 1, intmap.Height);
@@ -246,7 +250,7 @@ namespace AOABM.Droid
 
             var options = new BitmapFactory.Options { InJustDecodeBounds = true };
             await BitmapFactory.DecodeStreamAsync(memStream, null, options);
-            
+
             memStream.Seek(0, SeekOrigin.Begin);
 
             return (memStream, options.OutWidth, options.OutHeight);
@@ -258,6 +262,139 @@ namespace AOABM.Droid
             Directory.CreateDirectory(DataFolder);
 
             return Task.CompletedTask;
+        }
+
+        private int? currentPic = null;
+        private string currentChapter = null;
+
+        public async Task<Folders> CurrentFolder()
+        {
+            var name = await GetCurrentChapter();
+
+            return FlatFolders.FirstOrDefault(x => x.Name == name) ?? FlatFolders.FirstOrDefault();
+        }
+
+        List<Folders> IDataStore.FlatFolders => FlatFolders;
+
+        public async Task SetCurrentPicture(int pic)
+        {
+            currentPic = pic;
+            await File.WriteAllTextAsync(FileSystem.AppDataDirectory + "pic", pic.ToString());
+        }
+
+        public async Task SetCurrentChapter(string chapter)
+        {
+            currentChapter = chapter;
+            await File.WriteAllTextAsync(FileSystem.AppDataDirectory + "chapter", chapter);
+        }
+
+        public async Task<int> GetCurrentPic()
+        {
+            if (currentPic.HasValue) return currentPic.Value;
+
+            if (int.TryParse(await File.ReadAllTextAsync(FileSystem.AppDataDirectory + "pic"), out var res))
+            {
+                currentPic = res;
+                return res;
+            }
+
+            currentPic = 0;
+            return 0;
+        }
+
+        public async Task<string> GetCurrentChapter()
+        {
+            if (currentChapter != null) return currentChapter;
+
+            var res = await File.ReadAllTextAsync(FileSystem.AppDataDirectory + "chapter");
+
+            if (res == null)
+            {
+                currentChapter = string.Empty;
+            }
+            else
+            {
+                currentChapter = res;
+            }
+
+            return currentChapter;
+        }
+        public async Task LoadFolders()
+        {
+            Folders = (await GetFolders())?.SubFolders ?? new List<Folders>();
+
+            FlatFolders = new List<Folders>();
+            foreach (var folder in Folders)
+            {
+                ProcessFolder(folder);
+            }
+        }
+
+        private void ProcessFolder(Folders folder)
+        {
+            if (folder.Images.Any())
+            {
+                FlatFolders.Add(folder);
+            }
+
+            foreach (var f in folder.SubFolders)
+            {
+                ProcessFolder(f);
+            }
+        }
+
+        public async Task PreviousPicture()
+        {
+            var folder = await CurrentFolder();
+            if (folder == null) return;
+
+            if (currentPic == null)
+            {
+                currentPic = 0;
+                return;
+            }
+
+            if(currentPic.Value == 0)
+            {
+                var index = FlatFolders.IndexOf(folder) - 1;
+                if (index < 0) return;
+                var newFolder = FlatFolders[index];
+                await SetCurrentChapter(newFolder.Name);
+                await SetCurrentPicture(newFolder.Images.Count - 1);
+            }
+            else
+            {
+                await SetCurrentPicture(currentPic.Value - 1);
+            }
+        }
+
+        public async Task<bool> NextPicture()
+        {
+            var folder = await CurrentFolder();
+            if (folder == null) return true;
+
+
+            if (currentPic == null)
+            {
+                currentPic = 0;
+                return false;
+            }
+
+            var nextPic = currentPic.Value + 1;
+            if (nextPic >= folder.Images.Count)
+            {
+                var index = FlatFolders.IndexOf(folder) + 1;
+                if (index >= FlatFolders.Count) return true;
+
+                await SetCurrentChapter(FlatFolders[index].Name);
+                await SetCurrentPicture(0);
+                return false;
+            }
+            else
+            {
+                await SetCurrentPicture(nextPic);
+                return false;
+            }
         }
     }
 }

@@ -4,5 +4,6 @@
     <SelectedDevice>Samsung SM-F936B</SelectedDevice>
     <SelectedPlatformGroup>PhysicalDevice</SelectedPlatformGroup>
     <ActiveDebugProfile>Samsung SM-F936B</ActiveDebugProfile>
+    <AndroidDesignerPreferredTheme>MainTheme</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

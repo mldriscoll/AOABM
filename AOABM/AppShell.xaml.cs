@@ -14,10 +14,10 @@ namespace AOABM
             InitializeComponent();
             Routing.RegisterRoute(nameof(Chapter), typeof(Chapter));
 
-            foreach(var folder in App.Folders)
-            {
-                ProcessFolder(folder);
-            }
+            //foreach(var folder in App.Folders)
+            //{
+            //    ProcessFolder(folder);
+            //}
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
@@ -58,8 +58,8 @@ namespace AOABM
         private async void I_Clicked(object sender, EventArgs e)
         {
             var s = (FlyoutChapterItem)sender;
-            App.CurrentFolder = s.Folder;
-            App.CurrentImage = 0;
+            await App.FileSystem.SetCurrentChapter(s.Folder.Name);
+            await App.FileSystem.SetCurrentPicture(0);
             await Shell.Current.GoToAsync("Chapter");
         }
     }

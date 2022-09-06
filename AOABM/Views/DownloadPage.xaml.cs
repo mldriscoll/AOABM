@@ -21,8 +21,6 @@ namespace AOABM.Views
         {
             InitializeComponent();
 
-            DoDownloads();
-
             SL.Children.Add(FileLocation);
         }
 
@@ -33,7 +31,7 @@ namespace AOABM.Views
                     {
                         new VolumeDefinition.Mapping
                         {
-                            Folder = "101-If there aren't any books, I'll just have to make some!",
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\100-Covers",
                             Files = new List<VolumeDefinition.Mapping.Input>
                             {
                                 new VolumeDefinition.Mapping.Input{ NameOne = "cover.jpg"}
@@ -232,9 +230,9 @@ namespace AOABM.Views
             }
         };
 
-        private async void DoDownloads()
+        private async Task DoDownloads()
         {
-            var loginCall = await App.client.PostAsync("https://labs.j-novel.club/app/v1/auth/login?format=json", new StringContent($"{{\"login\":\"{App.Username}\",\"password\":\"{App.Password}\",\"slim\":true}}", System.Text.Encoding.ASCII, "application/json"));
+            var loginCall = await App.client.PostAsync("https://labs.j-novel.club/app/v1/auth/login?format=json", new StringContent($"{{\"login\":\"{Username.Text}\",\"password\":\"{Password.Text}\",\"slim\":true}}", System.Text.Encoding.ASCII, "application/json"));
             string bearerToken;
             using (var loginStream = await loginCall.Content.ReadAsStreamAsync())
             {
@@ -271,8 +269,8 @@ namespace AOABM.Views
 
             //process books
 
-            await App.LoadFolders();
-            await Navigation.PopAsync();
+            await App.FileSystem.LoadFolders();
+            await Navigation.PopModalAsync();
         }
 
         private async Task doVolumeDownload(string slug, VolumeDefinition vol, List<LibraryResponse.Book> books)
@@ -292,22 +290,21 @@ namespace AOABM.Views
 
 
         }
-    }
 
-    public interface IFileSystem
-    {
-        Task DoDownload(string link, VolumeDefinition vol);
-
-        Task<Folders> GetFolders();
-
-        Task<(Stream, double, double)> GetImageStream(string path);
-
-        Task Empty();
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await DoDownloads();
+        }
     }
 
     public class Folders
     {
         public string Name { get; set; }
+        public string DisplayName { get
+            {
+                var split = Name.Split('-').Skip(1);
+                return split.Skip(1).Aggregate(split.First(), (str, s) => $"{str}-{s}");
+            } }
         public List<Folders> SubFolders { get; set; }
 
         public List<string> Images { get; set; }
