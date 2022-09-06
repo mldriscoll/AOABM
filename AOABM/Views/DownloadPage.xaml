@@ -9,6 +9,8 @@
             <Label Text="j-novel.club Password:"></Label>
             <Entry x:Name="Password" IsPassword="True"></Entry>
             <Button Text="Download" Clicked="Button_Clicked"></Button>
+            <Label x:Name="CurrentVolume"></Label>
+            <ProgressBar x:Name="DownloadProgress"></ProgressBar>
         </StackLayout>
   </ContentPage.Content>
 </ContentPage>

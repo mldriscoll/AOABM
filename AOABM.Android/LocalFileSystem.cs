@@ -19,7 +19,7 @@ namespace AOABM.Droid
         public static List<Folders> Folders;
         public static List<Folders> FlatFolders;
 
-        public async Task DoDownload(string link, VolumeDefinition vol)
+        public async Task DoDownload(string link, VolumeDefinition vol, IProgress<double> progress)
         {
             if (!Directory.Exists(TempFolder)) Directory.CreateDirectory(TempFolder);
             if (File.Exists(TempFolder + vol.volumeName)) File.Delete(TempFolder + vol.volumeName);
@@ -33,6 +33,10 @@ namespace AOABM.Droid
 
                 file.Close();
             }
+
+            double progressScale = vol.mapping.Sum(x => x.Files.Count) + 2;
+
+            progress.Report(1 / progressScale);
 
             var dirName = vol.volumeName.Replace(".epub", "");
 
@@ -55,6 +59,9 @@ namespace AOABM.Droid
                     }
                 }
             }
+
+            progress.Report(2 / progressScale);
+            var count = 3;
 
             foreach (var map in vol.mapping)
             {
@@ -89,11 +96,14 @@ namespace AOABM.Droid
                     {
                         await TrimAndMove($"{TempFolder}{dirName}/{entry.NameOne}", $"{DataFolder}{folder}{i}.jpg");
                     }
+                    progress.Report(count / progressScale);
+                    count++;
                 }
             }
 
             Directory.Delete(TempFolder + dirName, true);
         }
+
         private async Task CombineImages(string one, string two, string target)
         {
             var sOne = await getMemoryStream(one);
@@ -145,40 +155,74 @@ namespace AOABM.Droid
             var canvas = new Canvas(intmap);
             canvas.DrawBitmap(bitmap, 0f, 0f, null);
 
-            int xMin = intmap.Width - 1;
+            //int yMin = intmap.Height - 1;
+            //int yMax = 0;
+
+            //for (int x = 0; x < intmap.Width; x++)
+            //{
+            //    for (int y = 0; y < yMin; y++)
+            //    {
+            //        if (intmap.GetPixel(x, y) != Color.White)
+            //        {
+            //            //if (x < xMin) xMin = x;
+            //            if (y < yMin) yMin = y;
+            //            if (y > yMax) yMax = y;
+            //        }
+            //    }
+            //    for (int y = intmap.Height - 1; y > yMax; y--)
+            //    {
+            //        if (intmap.GetPixel(x, y) != Color.White)
+            //        {
+            //            //if (x < xMin) xMin = x;
+            //            if (y < yMin) yMin = y;
+            //            if (y > yMax) yMax = y;
+            //        }
+            //    }
+            //}
+
+            int xMin = 0;
             int xMax = 0;
-            int yMin = intmap.Height - 1;
-            int yMax = 0;
 
-            for (int x = 0; x < intmap.Width; x++)
-            {
-                for (int y = 0; y < yMin; y++)
-                {
-                    if (intmap.GetPixel(x, y) != Color.White)
-                    {
-                        if (x < xMin) xMin = x;
-                        if (y < yMin) yMin = y;
-                        if (y > yMax) yMax = y;
-                    }
-                }
-                for (int y = intmap.Height - 1; y > yMax; y--)
-                {
-                    if (intmap.GetPixel(x, y) != Color.White)
-                    {
-                        if (x < xMin) xMin = x;
-                        if (y < yMin) yMin = y;
-                        if (y > yMax) yMax = y;
-                    }
-                }
-            }
-
-            for (int x = intmap.Width - 1; x > xMin; x--)
+            for (int x = intmap.Width - 1; x > -1; x--)
             {
                 var pixels = new int[intmap.Height];
-                intmap.GetPixels(pixels, 0, 1, x - 1, 0, 1, intmap.Height);
+                intmap.GetPixels(pixels, 0, 1, x, 0, 1, intmap.Height);
                 if (pixels.Any(y => y != Color.White))
                 {
                     xMax = x;
+                    break;
+                }
+            }
+            for (int x = 0; x < intmap.Width; x++)
+            {
+                var pixels = new int[intmap.Height];
+                intmap.GetPixels(pixels, 0, 1, x, 0, 1, intmap.Height);
+                if (pixels.Any(y => y != Color.White))
+                {
+                    xMin = x;
+                    break;
+                }
+            }
+
+            int yMin = 0;
+            int yMax = 0;
+            for (int y = intmap.Height - 1; y > -1; y--)
+            {
+                var pixels = new int[intmap.Width];
+                intmap.GetPixels(pixels, 0, intmap.Width, 0, y, intmap.Width, 1);
+                if (pixels.Any(y => y != Color.White))
+                {
+                    yMax = y;
+                    break;
+                }
+            }
+            for (int y = 0; y < intmap.Height; y++)
+            {
+                var pixels = new int[intmap.Width];
+                intmap.GetPixels(pixels, 0, intmap.Width, 0, y, intmap.Width, 1);
+                if (pixels.Any(y => y != Color.White))
+                {
+                    yMin = y;
                     break;
                 }
             }

@@ -1,4 +1,5 @@
 ﻿using AOABM.Views;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace AOABM.Services
 
         Task<string> GetCurrentChapter();
 
-        Task DoDownload(string link, VolumeDefinition vol);
+        Task DoDownload(string link, VolumeDefinition vol, IProgress<double> progress);
 
         Task<Folders> GetFolders();
 
