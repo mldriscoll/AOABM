@@ -17,6 +17,8 @@ namespace AOABM.Views
         {
             InitializeComponent();
 
+            NavigationPage.SetHasNavigationBar(this, false);
+
             var rightTap = new TapGestureRecognizer();
             Right.GestureRecognizers.Add(rightTap);
             rightTap.Tapped += RightTap_Tapped;

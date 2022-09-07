@@ -15,6 +15,7 @@ namespace AOABM
     {
         public BasePage()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             //AfterLoad();
         }
