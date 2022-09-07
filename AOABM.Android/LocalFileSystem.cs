@@ -252,7 +252,7 @@ namespace AOABM.Droid
         {
             if (!Directory.Exists(DataFolder)) Directory.CreateDirectory(DataFolder);
 
-            var folders = Directory.GetDirectories(DataFolder);
+            var folders = Directory.GetDirectories(DataFolder).OrderBy(x => x);
 
             var retFolder = new Folders
             {
@@ -280,7 +280,7 @@ namespace AOABM.Droid
 
             retFolder.Images = files.ToList();
 
-            foreach (var subFolder in Directory.GetDirectories(folder))
+            foreach (var subFolder in Directory.GetDirectories(folder).OrderBy(x => x))
             {
                 retFolder.SubFolders.Add(await getFolders(folder + "/", subFolder, layer + 1));
             }
