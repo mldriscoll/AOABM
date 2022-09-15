@@ -189,6 +189,218 @@ namespace AOABM.Views
                 }
             },
             {
+                "ascendance-of-a-bookworm-manga-volume-4",
+                new VolumeDefinition
+                {
+                    volumeName = "Ascendance of a Bookworm (Manga) Volume 4_1440.epub",
+                    mapping = new List<VolumeDefinition.Mapping>
+                    {
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\100-Covers",
+                            Files = new List<Inp>
+                            {
+                                new Inp(0){NameOne = "cover.jpg"}
+                            }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\115-Lutz's Most Important Job",
+                            Files = new List<Inp>{ 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\116a-Beginning to Make Paper",
+                            Files = new List<Inp>{ 35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\117-Lutz's Myne",
+                            Files = new List<Inp>{ 67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,98 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\118-The Merchant's Guild",
+                            Files = new List<Inp>{ 99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\119a-Temporary Registration and a Business Discussion",
+                            Files = new List<Inp>{ 131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\119b-Coins and the Value of Things",
+                            Files = new List<Inp>{ 159,160,161,162,163,164 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\116b-Zeg the Apprentice Craftsman",
+                            Files = new List<Inp>{ 166,167,168,169,170,171,172,173 }
+                        }
+                    }
+                }
+            },
+            {
+                "ascendance-of-a-bookworm-manga-volume-5",
+                new VolumeDefinition
+                {
+                    volumeName = "Ascendance of a Bookworm (Manga) Volume 5_1440.epub",
+                    mapping = new List<VolumeDefinition.Mapping>
+                    {
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\100-Covers",
+                            Files = new List<Inp>
+                            {
+                                new Inp(0){NameOne = "cover.jpg"}
+                            }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\120-The Guildmaster's Granddaughter",
+                            Files = new List<Inp>{ 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\121-Freida's Hairpins",
+                            Files = new List<Inp>{ 31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,68 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\122a-Improving Rinsham",
+                            Files = new List<Inp>{ 69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\123-A Trombe Appears",
+                            Files = new List<Inp>{ 105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\124a-Nearing Winter",
+                            Files = new List<Inp>{ 141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\124b-The Power of Money",
+                            Files = new List<Inp>{ 167,168,169,170,171,172,173,174 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\122b-Hairpins and the Meeting of Stores",
+                            Files = new List<Inp>{ 176,177,178,179,180,181,182,183,184,185 }
+                        }
+                    }
+                }
+            },
+            {
+                "ascendance-of-a-bookworm-manga-volume-6",
+                new VolumeDefinition
+                {
+                    volumeName = "Ascendance of a Bookworm (Manga) Volume 6_1440.epub",
+                    mapping = new List<VolumeDefinition.Mapping>
+                    {
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\100-Covers",
+                            Files = new List<Inp>
+                            {
+                                new Inp(0){NameOne = "cover.jpg"}
+                            }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\125-Freida and Myne",
+                            Files = new List<Inp>{ 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\126-The Beginning of Winter",
+                            Files = new List<Inp>{ 53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\127-Family Meeting",
+                            Files = new List<Inp>{ 87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\128-Resuming Paper-Making",
+                            Files = new List<Inp>{ 111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\129a-Vested Interests",
+                            Files = new List<Inp>{ 135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\129b-Some Time in the Woods",
+                            Files = new List<Inp>{ 171,172,173,174,175,176,177,178,180 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\129c-A Long-Awaited Reunion",
+                            Files = new List<Inp>{ 182,183,184,185,186,187,188,189 }
+                        }
+                    }
+                }
+            },
+            {
+                "ascendance-of-a-bookworm-manga-volume-7",
+                new VolumeDefinition
+                {
+                    volumeName = "Ascendance of a Bookworm (Manga) Volume 7_1440.epub",
+                    mapping = new List<VolumeDefinition.Mapping>
+                    {
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\100-Covers",
+                            Files = new List<Inp>
+                            {
+                                new Inp(0){NameOne = "cover.jpg"}
+                            }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\130-Freida's Contract and the Baptism Ceremony",
+                            Files = new List<Inp>{ 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\131-God-Given Paradise",
+                            Files = new List<Inp>{ 37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\132-Becoming an Apprentice Shrine Maiden",
+                            Files = new List<Inp>{ 81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\133a-Confrontation",
+                            Files = new List<Inp>{ 137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,new Inp(184,185)}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\133b-Negotiations in the High Priest's Chambers",
+                            Files = new List<Inp>{ 187,188,189,190,191,192,193,194}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\133d-The Pound Cake Taste-Test Event",
+                            Files = new List<Inp>{ 195,196,197,198,199,200,201,202,203,204,205,206,207,208}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "101-If there aren't any books, I'll just have to make some!\\133c-As the Gilberta Company's Successor",
+                            Files = new List<Inp>{ 210,211,212,213,214,215,216,217,218,219,220,221}
+                        }
+                    }
+                }
+            },
+            {
                 "ascendance-of-a-bookworm-manga-part-2-vol-1", new VolumeDefinition
                 {
                     volumeName = "Ascendance of a Bookworm (Manga) Part 2 Volume 1_1440.epub",
