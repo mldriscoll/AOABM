@@ -44,7 +44,7 @@ namespace AOABM
             }
             else
             {
-                var b = new FoldersButton { Text = folder.DisplayName, Folder = folder };
+                var b = new FoldersButton { Text = folder.DisplayName, Folder = folder, BorderWidth = 0, Margin = new Thickness(2,2,2,2), HeightRequest = 30, Padding = 0, VerticalOptions = LayoutOptions.Start, TextTransform = TextTransform.None };
                 b.Clicked += B_Clicked;
                 SL.Children.Add(b); 
             }

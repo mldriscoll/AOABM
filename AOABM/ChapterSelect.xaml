@@ -4,7 +4,7 @@
              x:Class="AOABM.ChapterSelect">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout x:Name="SL">
+            <StackLayout x:Name="SL" Padding="0" Spacing="0">
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
