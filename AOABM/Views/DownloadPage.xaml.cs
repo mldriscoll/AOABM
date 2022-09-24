@@ -237,6 +237,11 @@ namespace AOABM.Views
                         {
                             Folder = "101-If there aren't any books, I'll just have to make some!\\116b-Zeg the Apprentice Craftsman",
                             Files = new List<Inp>{ 166,167,168,169,170,171,172,173 }
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "x1-Myne's Game of Life",
+                            Files = new List<Inp>{ new Inp(177,178) }
                         }
                     }
                 }
@@ -396,6 +401,11 @@ namespace AOABM.Views
                         {
                             Folder = "101-If there aren't any books, I'll just have to make some!\\133c-As the Gilberta Company's Successor",
                             Files = new List<Inp>{ 210,211,212,213,214,215,216,217,218,219,220,221}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "x2-Maps",
+                            Files = new List<Inp>{new Inp(2,3)}
                         }
                     }
                 }
@@ -408,7 +418,7 @@ namespace AOABM.Views
                     {
                         new VolumeDefinition.Mapping
                         {
-                            Folder = "102-I'll even join the temple to read books!\\200-Covers",
+                            Folder = "102-I'll even join the temple to read books!\\200a-Covers",
                             Files = new List<Inp>
                             {
                                 new Inp(0){NameOne = "cover.jpg"}
@@ -418,6 +428,94 @@ namespace AOABM.Views
                         {
                             Folder = "102-I'll even join the temple to read books!\\201-Apprentice Shrine Maiden in the Temple",
                             Files = new List<Inp>{5,new Inp(6,7),8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\202a-Meeting in the Temple",
+                            Files = new List<Inp>{51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\203-Why I Collapsed",
+                            Files= new List<Inp>{ 95,96,97,98,99,100,101,102,103,new Inp(104,105),106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\204-What They Deserve",
+                            Files= new List<Inp>{ 131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\202b-How to Handle the Myne Workshop",
+                            Files= new List<Inp>{ 177,178,179,180,181,182,183,184}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\200b-Fran and the Commoner Apprentice Blue Shrine Maiden",
+                            Files= new List<Inp>{ 186,187,188,189,190,191,192,193,194,195}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "x1-Myne's Game of Life",
+                            Files= new List<Inp>{ new Inp(198,199)}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "x2-Maps",
+                            Files = new List<Inp>{new Inp(2,3)}
+                        }
+                    }
+                }
+            },
+            {
+                "ascendance-of-a-bookworm-manga-part-2-vol-2",
+                new VolumeDefinition
+                {
+                    volumeName = "Ascendance of a Bookworm (Manga) Part 2 Volume 2_1440.epub",
+                    mapping = new List<VolumeDefinition.Mapping>
+                    {
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\200a-Covers",
+                            Files = new List<Inp>
+                            {
+                                new Inp(0){NameOne = "cover.jpg"}
+                            },
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\205-Gil's Job",
+                            Files = new List<Inp>{5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\206-Everyone Has a Job to Do",
+                            Files = new List<Inp>{29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\207-My Third Attendant",
+                            Files = new List<Inp>{61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\208a-The Reality of the Orphanage",
+                            Files = new List<Inp>{91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\209a-A Secret Talk with the High Priest",
+                            Files = new List<Inp>{121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,new Inp(140,141),142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\209b-Sister Myne and Me",
+                            Files = new List<Inp>{161,162,163,164,165,166,167,168}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\208b-The Other Side of the Orphanage Incident",
+                            Files = new List<Inp>{170,171,172,173,174,175,176,177}
                         }
                     }
                 }
