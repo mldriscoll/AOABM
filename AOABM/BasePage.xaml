@@ -7,6 +7,7 @@
             <Button Text="Download Manga" x:Name="DownloadButton" Clicked="DownloadButton_Clicked"></Button>
             <Button Text="Resume reading" x:Name="ResumeButton" Clicked="ResumeButton_Clicked"></Button>
             <Button Text="Chapter Select" x:Name="SelectButton" Clicked="SelectButton_Clicked"></Button>
+            <!--            <Button Text="Delete Local Files" x:Name="DeleteButton" Clicked="DeleteButton_Clicked"></Button>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

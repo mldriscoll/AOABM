@@ -1,4 +1,5 @@
 ﻿using AOABM.Views;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,5 +33,9 @@ namespace AOABM.Services
         Task PreviousPicture();
 
         Task<bool> NextPicture();
+
+        Task<bool> UpdateDataFolder();
+
+        Task<SQLiteConnection> GetSqlConnection();
     }
 }

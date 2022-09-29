@@ -1,12 +1,8 @@
 ﻿using AOABM.Services;
-using AOABM.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using SQLite;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace AOABM
 {
@@ -33,6 +29,7 @@ namespace AOABM
                 await Task.Delay(100);
             }
 
+            await FileSystem.UpdateDataFolder();
             await FileSystem.LoadFolders();
         }
 

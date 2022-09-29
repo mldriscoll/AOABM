@@ -9,99 +9,136 @@ using Android.Graphics;
 using Xamarin.Essentials;
 using System;
 using AOABM.Services;
+using SQLite;
 
 namespace AOABM.Droid
 {
     public class LocalFileSystem : IDataStore
     {
-        string DataFolder = FileSystem.AppDataDirectory + "/manga/";
+        string DataFolder = FileSystem.AppDataDirectory + "/manga2/";
+        string OldDataFolder = FileSystem.AppDataDirectory + "/manga/";
         string TempFolder = FileSystem.AppDataDirectory + "/temp/";
         public static List<Folders> Folders;
         public static List<Folders> FlatFolders;
 
         public async Task DoDownload(string link, VolumeDefinition vol, IProgress<double> progress)
         {
-            if (!Directory.Exists(TempFolder)) Directory.CreateDirectory(TempFolder);
-            if (File.Exists(TempFolder + vol.volumeName)) File.Delete(TempFolder + vol.volumeName);
-
-            using (var file = File.Create(TempFolder + vol.volumeName))
+            using (var conn = await GetSqlConnection())
             {
-                using (var stream = await MainApp.client.GetStreamAsync(link))
+                progress.Report(0);
+
+                var tables = conn.QueryScalars<string>(@"SELECT name FROM sqlite_master");
+
+                var oldVersion = conn.ExecuteScalar<int?>(@"SELECT Version FROM Versions WHERE Name = ?", vol.volumeName);
+
+                if (oldVersion.HasValue && oldVersion.Value == vol.Version)
                 {
-                    await stream.CopyToAsync(file);
+                    return;
                 }
 
-                file.Close();
-            }
+                if (!Directory.Exists(TempFolder)) Directory.CreateDirectory(TempFolder);
+                if (File.Exists(TempFolder + vol.volumeName)) File.Delete(TempFolder + vol.volumeName);
 
-            double progressScale = vol.mapping.Sum(x => x.Files.Count) + 2;
-
-            progress.Report(1 / progressScale);
-
-            var dirName = vol.volumeName.Replace(".epub", "");
-
-            if (Directory.Exists(TempFolder + dirName)) Directory.Delete(TempFolder + dirName, true);
-            Directory.CreateDirectory(TempFolder + dirName);
-
-            using (var file = File.OpenRead(TempFolder + vol.volumeName))
-            {
-                using (var za = new ZipArchive(file))
+                using (var file = File.Create(TempFolder + vol.volumeName))
                 {
-                    foreach (var entry in za.Entries)
+                    using (var stream = await MainApp.client.GetStreamAsync(link))
                     {
-                        var innerFile = File.Create($"{TempFolder}{dirName}/{entry.Name}");
-                        using (var zFileStream = entry.Open())
+                        await stream.CopyToAsync(file);
+                    }
+
+                    file.Close();
+                }
+
+                double progressScale = vol.mapping.Sum(x => x.Files.Count) + 2;
+
+                progress.Report(1 / progressScale);
+
+                var dirName = "f" + vol.volumeName;
+
+                if (Directory.Exists(TempFolder + dirName)) Directory.Delete(TempFolder + dirName, true);
+                Directory.CreateDirectory(TempFolder + dirName);
+
+                using (var file = File.OpenRead(TempFolder + vol.volumeName))
+                {
+                    using (var za = new ZipArchive(file))
+                    {
+                        foreach (var entry in za.Entries)
                         {
-                            await zFileStream.CopyToAsync(innerFile);
+                            var innerFile = File.Create($"{TempFolder}{dirName}/{entry.Name}");
+                            using (var zFileStream = entry.Open())
+                            {
+                                await zFileStream.CopyToAsync(innerFile);
+                            }
+                            innerFile.Close();
+                            innerFile.Dispose();
                         }
-                        innerFile.Close();
-                        innerFile.Dispose();
                     }
                 }
-            }
 
-            progress.Report(2 / progressScale);
-            var count = 3;
+                progress.Report(2 / progressScale);
+                var count = 3;
 
-            foreach (var map in vol.mapping)
-            {
-                var split = map.Folder.Split('\\');
-
-                var folder = string.Empty;
-
-                foreach (var splitFolder in split)
+                foreach (var map in vol.mapping)
                 {
-                    if (!Directory.Exists($"{DataFolder}{folder}{splitFolder}")) Directory.CreateDirectory($"{DataFolder}{folder}{splitFolder}");
+                    var split = map.Folder.Split('\\');
 
-                    folder = $"{folder}{splitFolder}/";
+                    var folder = string.Empty;
+
+                    foreach (var splitFolder in split)
+                    {
+                        if (!Directory.Exists($"{DataFolder}{folder}{splitFolder}"))
+                            Directory.CreateDirectory($"{DataFolder}{folder}{splitFolder}");
+
+                        folder = $"{folder}{splitFolder}/";
+                    }
+
+                    if (!map.SharedFolder)
+                    {
+                        Directory.Delete($"{DataFolder}{folder}", true);
+                        Directory.CreateDirectory($"{DataFolder}{folder}");
+                    }
+
+                    var i = Directory.GetFiles(DataFolder + folder).Length;
+
+                    foreach (var entry in map.Files)
+                    {
+                        if (map.SharedFolder && entry.Target.HasValue)
+                        {
+                            if (File.Exists($"{DataFolder}{folder}{entry.Target}.jpg")) File.Delete($"{DataFolder}{folder}{entry.Target}.jpg");
+                        }
+
+                        try
+                        {
+                            if (!string.IsNullOrWhiteSpace(entry.NameTwo))
+                            {
+                                await CombineImages($"{TempFolder}{dirName}/{entry.NameOne}", $"{TempFolder}{dirName}/{entry.NameTwo}", $"{DataFolder}{folder}{ entry.Target ?? i}.jpg");
+                            }
+                            else
+                            {
+                                await TrimAndMove($"{TempFolder}{dirName}/{entry.NameOne}", $"{DataFolder}{folder}{entry.Target ?? i}.jpg");
+                            }
+                            i++;
+                        }
+                        catch (Exception)
+                        {
+                            await TrimAndMove($"{TempFolder}{dirName}/{entry.NameOne}", $"{DataFolder}{folder}{entry.Target ?? i}.jpg");
+                        }
+                        progress.Report(count / progressScale);
+                        count++;
+                    }
                 }
 
-                var i = Directory.GetFiles(DataFolder + folder).Length;
+                Directory.Delete(TempFolder + dirName, true);
 
-                foreach (var entry in map.Files)
+                if (oldVersion.HasValue)
                 {
-                    try
-                    {
-                        if (!string.IsNullOrWhiteSpace(entry.NameTwo))
-                        {
-                            await CombineImages($"{TempFolder}{dirName}/{entry.NameOne}", $"{TempFolder}{dirName}/{entry.NameTwo}", $"{DataFolder}{folder}{i}.jpg");
-                        }
-                        else
-                        {
-                            await TrimAndMove($"{TempFolder}{dirName}/{entry.NameOne}", $"{DataFolder}{folder}{i}.jpg");
-                        }
-                        i++;
-                    }
-                    catch (Exception ex)
-                    {
-                        await TrimAndMove($"{TempFolder}{dirName}/{entry.NameOne}", $"{DataFolder}{folder}{i}.jpg");
-                    }
-                    progress.Report(count / progressScale);
-                    count++;
+                    conn.Execute(@"UPDATE Versions SET Version = ? WHERE Name = ?", vol.Version, vol.volumeName);
+                }
+                else
+                {
+                    conn.Execute("INSERT INTO Versions (Name, Version) VALUES (?,?)", vol.volumeName, vol.Version);
                 }
             }
-
-            Directory.Delete(TempFolder + dirName, true);
         }
 
         private async Task CombineImages(string one, string two, string target)
@@ -439,6 +476,21 @@ namespace AOABM.Droid
                 await SetCurrentPicture(nextPic);
                 return false;
             }
+        }
+
+        public Task<SQLiteConnection> GetSqlConnection()
+        {
+            var conn = new SQLiteConnection(System.IO.Path.Combine(DataFolder,"db.db"));
+            return Task.FromResult(conn);
+        }
+
+        public Task<bool> UpdateDataFolder()
+        {
+            if (Directory.Exists(OldDataFolder)) Directory.Delete(OldDataFolder, true);
+
+            if(!Directory.Exists(DataFolder)) Directory.CreateDirectory(DataFolder);
+
+            return Task.FromResult(true);
         }
     }
 }

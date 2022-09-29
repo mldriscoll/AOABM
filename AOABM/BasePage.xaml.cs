@@ -58,5 +58,10 @@ namespace AOABM
         {
             Navigation.PushModalAsync(new DownloadPage());
         }
+
+        private async void DeleteButton_Clicked(object sender, EventArgs e)
+        {
+            await App.FileSystem.Empty();
+        }
     }
 }

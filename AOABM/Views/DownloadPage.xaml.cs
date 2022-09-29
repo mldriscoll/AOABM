@@ -27,14 +27,17 @@ namespace AOABM.Views
         Dictionary<string, VolumeDefinition> volumes = new Dictionary<string, VolumeDefinition>
         {
             {"ascendance-of-a-bookworm-manga-volume-1", new VolumeDefinition
-                { volumeName = "Ascendance of a Bookworm (Manga) Volume 1_1440.epub", mapping = new List<VolumeDefinition.Mapping>
+                { volumeName = "P1V1",
+                Version = 1,
+                mapping = new List<VolumeDefinition.Mapping>
                     {
                         new VolumeDefinition.Mapping
                         {
+                            SharedFolder = true,
                             Folder = "101-If there aren't any books, I'll just have to make some!\\100-Covers",
                             Files = new List<Inp>
                             {
-                                new Inp(0){ NameOne = "cover.jpg"}
+                                new Inp(0, (int?)null, 1){ NameOne = "cover.jpg"}
                             }
                         },
                         new VolumeDefinition.Mapping
@@ -91,15 +94,17 @@ namespace AOABM.Views
             {
                 "ascendance-of-a-bookworm-manga-volume-2", new VolumeDefinition
                 {
-                    volumeName = "Ascendance of a Bookworm (Manga) Volume 2_1440.epub",
+                    volumeName = "P1V2",
+                    Version = 1,
                     mapping = new List<VolumeDefinition.Mapping>
                     {
                         new VolumeDefinition.Mapping
                         {
+                            SharedFolder = true,
                             Folder = "101-If there aren't any books, I'll just have to make some!\\100-Covers",
                             Files = new List<Inp>
                             {
-                                new Inp(0){NameOne = "cover.jpg"}
+                                new Inp(0, null, 2){NameOne = "cover.jpg"}
                             },
                         },
                         new VolumeDefinition.Mapping
@@ -139,15 +144,17 @@ namespace AOABM.Views
                 "ascendance-of-a-bookworm-manga-volume-3",
                 new VolumeDefinition
                 {
-                    volumeName = "Ascendance of a Bookworm (Manga) Volume 3_1440.epub",
+                    volumeName = "P1V3",
+                    Version = 1,
                     mapping = new List<VolumeDefinition.Mapping>
                     {
                         new VolumeDefinition.Mapping
                         {
+                            SharedFolder = true,
                             Folder = "101-If there aren't any books, I'll just have to make some!\\100-Covers",
                             Files = new List<Inp>
                             {
-                                new Inp(0){NameOne = "cover.jpg"}
+                                new Inp(0, null, 3){NameOne = "cover.jpg"}
                             },
                         },
                         new VolumeDefinition.Mapping
@@ -192,15 +199,17 @@ namespace AOABM.Views
                 "ascendance-of-a-bookworm-manga-volume-4",
                 new VolumeDefinition
                 {
-                    volumeName = "Ascendance of a Bookworm (Manga) Volume 4_1440.epub",
+                    volumeName = "P1V4",
+                    Version = 1,
                     mapping = new List<VolumeDefinition.Mapping>
                     {
                         new VolumeDefinition.Mapping
                         {
+                            SharedFolder = true,
                             Folder = "101-If there aren't any books, I'll just have to make some!\\100-Covers",
                             Files = new List<Inp>
                             {
-                                new Inp(0){NameOne = "cover.jpg"}
+                                new Inp(0, null, 4){NameOne = "cover.jpg"}
                             }
                         },
                         new VolumeDefinition.Mapping
@@ -240,8 +249,9 @@ namespace AOABM.Views
                         },
                         new VolumeDefinition.Mapping
                         {
+                            SharedFolder = true,
                             Folder = "x1-Myne's Game of Life",
-                            Files = new List<Inp>{ new Inp(177,178) }
+                            Files = new List<Inp>{ new Inp(177,178,1) }
                         }
                     }
                 }
@@ -250,15 +260,17 @@ namespace AOABM.Views
                 "ascendance-of-a-bookworm-manga-volume-5",
                 new VolumeDefinition
                 {
-                    volumeName = "Ascendance of a Bookworm (Manga) Volume 5_1440.epub",
+                    volumeName = "P1V5",
+                    Version = 1,
                     mapping = new List<VolumeDefinition.Mapping>
                     {
                         new VolumeDefinition.Mapping
                         {
+                            SharedFolder = true,
                             Folder = "101-If there aren't any books, I'll just have to make some!\\100-Covers",
                             Files = new List<Inp>
                             {
-                                new Inp(0){NameOne = "cover.jpg"}
+                                new Inp(0,null,5){NameOne = "cover.jpg"}
                             }
                         },
                         new VolumeDefinition.Mapping
@@ -303,15 +315,17 @@ namespace AOABM.Views
                 "ascendance-of-a-bookworm-manga-volume-6",
                 new VolumeDefinition
                 {
-                    volumeName = "Ascendance of a Bookworm (Manga) Volume 6_1440.epub",
+                    volumeName = "P1V6",
+                    Version = 1,
                     mapping = new List<VolumeDefinition.Mapping>
                     {
                         new VolumeDefinition.Mapping
                         {
+                            SharedFolder = true,
                             Folder = "101-If there aren't any books, I'll just have to make some!\\100-Covers",
                             Files = new List<Inp>
                             {
-                                new Inp(0){NameOne = "cover.jpg"}
+                                new Inp(0,null,6){NameOne = "cover.jpg"}
                             }
                         },
                         new VolumeDefinition.Mapping
@@ -356,15 +370,17 @@ namespace AOABM.Views
                 "ascendance-of-a-bookworm-manga-volume-7",
                 new VolumeDefinition
                 {
-                    volumeName = "Ascendance of a Bookworm (Manga) Volume 7_1440.epub",
+                    volumeName = "P1V7",
+                    Version = 1,
                     mapping = new List<VolumeDefinition.Mapping>
                     {
                         new VolumeDefinition.Mapping
                         {
+                            SharedFolder = true,
                             Folder = "101-If there aren't any books, I'll just have to make some!\\100-Covers",
                             Files = new List<Inp>
                             {
-                                new Inp(0){NameOne = "cover.jpg"}
+                                new Inp(0,null,7){NameOne = "cover.jpg"}
                             }
                         },
                         new VolumeDefinition.Mapping
@@ -404,8 +420,9 @@ namespace AOABM.Views
                         },
                         new VolumeDefinition.Mapping
                         {
+                            SharedFolder = true,
                             Folder = "x2-Maps",
-                            Files = new List<Inp>{new Inp(2,3)}
+                            Files = new List<Inp>{new Inp(2,3,1)}
                         }
                     }
                 }
@@ -413,15 +430,17 @@ namespace AOABM.Views
             {
                 "ascendance-of-a-bookworm-manga-part-2-vol-1", new VolumeDefinition
                 {
-                    volumeName = "Ascendance of a Bookworm (Manga) Part 2 Volume 1_1440.epub",
+                    volumeName = "P2V1",
+                    Version = 1,
                     mapping = new List<VolumeDefinition.Mapping>
                     {
                         new VolumeDefinition.Mapping
                         {
+                            SharedFolder = true,
                             Folder = "102-I'll even join the temple to read books!\\200a-Covers",
                             Files = new List<Inp>
                             {
-                                new Inp(0){NameOne = "cover.jpg"}
+                                new Inp(0,null,1){NameOne = "cover.jpg"}
                             },
                         },
                         new VolumeDefinition.Mapping
@@ -456,30 +475,34 @@ namespace AOABM.Views
                         },
                         new VolumeDefinition.Mapping
                         {
+                            SharedFolder = true,
                             Folder = "x1-Myne's Game of Life",
-                            Files= new List<Inp>{ new Inp(198,199)}
+                            Files= new List<Inp>{ new Inp(198,199,2)}
                         },
                         new VolumeDefinition.Mapping
                         {
+                            SharedFolder = true,
                             Folder = "x2-Maps",
-                            Files = new List<Inp>{new Inp(2,3)}
+                            Files = new List<Inp>{new Inp(2,3,2)}
                         }
                     }
                 }
             },
             {
-                "ascendance-of-a-bookworm-manga-part-2-vol-2",
+                "ascendance-of-a-bookworm-manga-part-2-volume-2",
                 new VolumeDefinition
                 {
-                    volumeName = "Ascendance of a Bookworm (Manga) Part 2 Volume 2_1440.epub",
+                    volumeName = "P2V2",
+                    Version = 1,
                     mapping = new List<VolumeDefinition.Mapping>
                     {
                         new VolumeDefinition.Mapping
                         {
+                            SharedFolder = true,
                             Folder = "102-I'll even join the temple to read books!\\200a-Covers",
                             Files = new List<Inp>
                             {
-                                new Inp(0){NameOne = "cover.jpg"}
+                                new Inp(0,null,2){NameOne = "cover.jpg"}
                             },
                         },
                         new VolumeDefinition.Mapping
@@ -519,6 +542,259 @@ namespace AOABM.Views
                         }
                     }
                 }
+            },
+            {
+                "ascendance-of-a-bookworm-manga-part-2-volume-3",
+                new VolumeDefinition
+                {
+                    volumeName = "P2V3",
+                    Version = 1,
+                    mapping = new List<VolumeDefinition.Mapping>
+                    {
+                        new VolumeDefinition.Mapping
+                        {
+                            SharedFolder = true,
+                            Folder = "102-I'll even join the temple to read books!\\200a-Covers",
+                            Files = new List<Inp>
+                            {
+                                new Inp(0,null,3){NameOne = "cover.jpg"}
+                            },
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\210-The Great Orphanage Cleanup",
+                            Files = new List<Inp>{5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\211-The Orphanage Director's Visit",
+                            Files = new List<Inp>{25,26,27,28,29,30,31,new Inp(32,33),34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\212-Growing Problems",
+                            Files = new List<Inp>{51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\213-Diptychs and Karuta",
+                            Files = new List<Inp>{79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\214a-Preparing for the Star Festival",
+                            Files = new List<Inp>{107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\215a-The Star Festival",
+                            Files = new List<Inp>{131,new Inp(132,133),134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,new Inp(152,153),154,155,156,157,158,159,160}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\214b-Ordering Ceremonial Robes",
+                            Files = new List<Inp>{163,164,165,166,167,168,169,170}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\215b-Gathering Taues",
+                            Files = new List<Inp>{172,173,174,175,176,177,178,179}
+                        }
+                    }
+                }
+            },
+            {
+                "ascendance-of-a-bookworm-manga-part-2-volume-4",
+                new VolumeDefinition
+                {
+                    volumeName = "P2V4",
+                    Version = 1,
+                    mapping = new List<VolumeDefinition.Mapping>
+                    {
+                        new VolumeDefinition.Mapping
+                        {
+                            SharedFolder = true,
+                            Folder = "102-I'll even join the temple to read books!\\200a-Covers",
+                            Files = new List<Inp>
+                            {
+                                new Inp(0,null,4){NameOne = "cover.jpg"}
+                            },
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\216-Lutz's Path",
+                            Files = new List<Inp>{5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\217a-Running Away from Home",
+                            Files = new List<Inp>{29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\218-Family Meeting at the Temple",
+                            Files = new List<Inp>{61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\219-One Wilma, Please",
+                            Files = new List<Inp>{97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\220a-Gifts and an Education",
+                            Files = new List<Inp>{117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\218b-My Son's Growth",
+                            Files = new List<Inp>{149,150,151,152,153,154,155,156}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\217b-This Thing Called Family",
+                            Files = new List<Inp>{158,159,160,161,162,163,164,165,166}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            SharedFolder = true,
+                            Folder = "102-I'll even join the temple to read books!\\2xx-Bonus Strips",
+                            Files = new List<Inp>{170,171,1}
+                        }
+                    }
+                }
+            },
+            {
+                "ascendance-of-a-bookworm-manga-part-2-volume-5",
+                new VolumeDefinition
+                {
+                    volumeName = "P2V5",
+                    Version = 1,
+                    mapping = new List<VolumeDefinition.Mapping>
+                    {
+                        new VolumeDefinition.Mapping
+                        {
+                            SharedFolder = true,
+                            Folder = "102-I'll even join the temple to read books!\\200a-Covers",
+                            Files = new List<Inp>
+                            {
+                                new Inp(0,null,5){NameOne = "cover.jpg"}
+                            },
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\221-My New Attendants",
+                            Files = new List<Inp>{5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\222a-Attendants of an Apprentice Blue Shrine Maiden",
+                            Files = new List<Inp>{33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\222b-Christine's Former Attendants",
+                            Files = new List<Inp>{51,52,53,54,55,56,57,58,59,60,61,62,63,64}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\223a-Preparing to Make Ink",
+                            Files = new List<Inp>{67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\224-Making Ink",
+                            Files = new List<Inp>{89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\225a-Challenging Woodblock Printing",
+                            Files = new List<Inp>{121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\223b-Problems with the Italian Restaurant",
+                            Files = new List<Inp>{155,156,157,158,159,160,161,162,163,164,165,166,167,168}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\225b-Preparing for the Baby",
+                            Files = new List<Inp>{170,171,172,173,174,175,176,177,178}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            SharedFolder = true,
+                            Folder = "x1-Myne's Game of Life",
+                            Files= new List<Inp>{ new Inp(182,183,3)}
+                        }
+                    }
+                }
+            },
+            {
+                "ascendance-of-a-bookworm-manga-part-2-volume-6",
+                new VolumeDefinition
+                {
+                    volumeName = "P2V6",
+                    Version = 1,
+                    mapping = new List<VolumeDefinition.Mapping>
+                    {
+                        new VolumeDefinition.Mapping
+                        {
+                            SharedFolder = true,
+                            Folder = "102-I'll even join the temple to read books!\\200a-Covers",
+                            Files = new List<Inp>
+                            {
+                                new Inp(0,null,6){NameOne = "cover.jpg"}
+                            },
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\226-Suspicions and a New Connection",
+                            Files = new List<Inp>{5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\227-Preparing Stencils",
+                            Files = new List<Inp>{23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\228-Binding a Picture-Book Bible for Children",
+                            Files = new List<Inp>{47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,new Inp(84,85),86}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\229-After Completing the Picture Book",
+                            Files = new List<Inp>{89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\230a-The Myne Decimal System",
+                            Files = new List<Inp>{113,new Inp(114,115),116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\231a-Starting Winter Prep",
+                            Files = new List<Inp>{139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\231b-The Story of Cinderella",
+                            Files = new List<Inp>{171,172,173,174,175,176,177,178}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            Folder = "102-I'll even join the temple to read books!\\230b-Books and Karuta",
+                            Files = new List<Inp>{180,181,182,183,184,185,186,187,188,189}
+                        },
+                        new VolumeDefinition.Mapping
+                        {
+                            SharedFolder = true,
+                            Folder = "102-I'll even join the temple to read books!\\2xx-Bonus Strips",
+                            Files = new List<Inp>{192,193,2}
+                        }
+                    }
+                }
             }
         };
 
@@ -545,15 +821,33 @@ namespace AOABM.Views
                 library = deserializer.ReadObject(loginStream) as LibraryResponse;
             }
 
-            await App.FileSystem.Empty();
-
             App.client.DefaultRequestHeaders.Authorization = null;
+
+            using (var conn = await App.FileSystem.GetSqlConnection())
+            {
+                var tname = conn.ExecuteScalar<string>("SELECT name FROM sqlite_master WHERE type='table' AND name='Versions'");
+
+                if (string.IsNullOrWhiteSpace(tname))
+                {
+                    conn.Execute("CREATE TABLE Versions (Name nvarchar(100), Version int)");
+                }
+
+                conn.Close();
+                conn.Dispose();
+            }
 
             foreach (var vol in volumes)
             {
-                //check for previous downloads
+                try
+                {
+                    //check for previous downloads
 
-                await doVolumeDownload(vol.Key, vol.Value, library.books);
+                    await doVolumeDownload(vol.Key, vol.Value, library.books);
+                }
+                catch(Exception ex)
+                {
+
+                }
             }
 
             await App.FileSystem.LoadFolders();
@@ -574,6 +868,7 @@ namespace AOABM.Views
 
             var progress = new Progress<double>();
             progress.ProgressChanged += Progress_ProgressChanged;
+            
             await App.FileSystem.DoDownload(download.link, vol, progress);
 
 
