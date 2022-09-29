@@ -16,12 +16,9 @@ namespace AOABM.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DownloadPage : ContentPage
     {
-        public static Entry FileLocation = new Entry();
         public DownloadPage()
         {
             InitializeComponent();
-
-            SL.Children.Add(FileLocation);
         }
 
         Dictionary<string, VolumeDefinition> volumes = new Dictionary<string, VolumeDefinition>
@@ -800,12 +797,20 @@ namespace AOABM.Views
 
         private async Task DoDownloads()
         {
-            var loginCall = await App.client.PostAsync("https://labs.j-novel.club/app/v1/auth/login?format=json", new StringContent($"{{\"login\":\"{Username.Text}\",\"password\":\"{Password.Text}\",\"slim\":true}}", System.Text.Encoding.ASCII, "application/json"));
             string bearerToken;
-            using (var loginStream = await loginCall.Content.ReadAsStreamAsync())
+            try
             {
-                var deserializer = new DataContractJsonSerializer(typeof(LoginResponse));
-                bearerToken = (deserializer.ReadObject(loginStream) as LoginResponse).id;
+                var loginCall = await App.client.PostAsync("https://labs.j-novel.club/app/v1/auth/login?format=json", new StringContent($"{{\"login\":\"{Username.Text}\",\"password\":\"{Password.Text}\",\"slim\":true}}", System.Text.Encoding.ASCII, "application/json"));
+                using (var loginStream = await loginCall.Content.ReadAsStreamAsync())
+                {
+                    var deserializer = new DataContractJsonSerializer(typeof(LoginResponse));
+                    bearerToken = (deserializer.ReadObject(loginStream) as LoginResponse).id;
+                }
+            }
+            catch(Exception ex)
+            {
+                await DisplayAlert("Login Failed", "Login to j-novel.club API Failed", "Retry");
+                return;
             }
 
 
