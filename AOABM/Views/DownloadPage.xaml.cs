@@ -605,7 +605,7 @@ namespace AOABM.Views
                 new VolumeDefinition
                 {
                     volumeName = "P2V4",
-                    Version = 1,
+                    Version = 3,
                     mapping = new List<VolumeDefinition.Mapping>
                     {
                         new VolumeDefinition.Mapping
@@ -654,9 +654,9 @@ namespace AOABM.Views
                         },
                         new VolumeDefinition.Mapping
                         {
-                            SharedFolder = true,
+                            SharedFolder = false,
                             Folder = "102-I'll even join the temple to read books!\\2xx-Bonus Strips",
-                            Files = new List<Inp>{170,171,1}
+                            Files = new List<Inp>{new Inp(170, null, 1), new Inp(171, null, 2)}
                         }
                     }
                 }
@@ -732,7 +732,7 @@ namespace AOABM.Views
                 new VolumeDefinition
                 {
                     volumeName = "P2V6",
-                    Version = 1,
+                    Version = 3,
                     mapping = new List<VolumeDefinition.Mapping>
                     {
                         new VolumeDefinition.Mapping
@@ -788,7 +788,7 @@ namespace AOABM.Views
                         {
                             SharedFolder = true,
                             Folder = "102-I'll even join the temple to read books!\\2xx-Bonus Strips",
-                            Files = new List<Inp>{192,193,2}
+                            Files = new List<Inp>{new Inp(192, null, 3),new Inp(193, null,4)}
                         }
                     }
                 }
